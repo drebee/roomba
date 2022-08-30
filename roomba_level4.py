@@ -5,15 +5,14 @@
 # Author: Dr. EB <------ REPLACE THIS WITH YOUR NAME!
 # -----------------------------------------------------------------------------
  
-from turtle import right, left, forward, backward
+from turtle import right, left, forward, backward, speed
 import room
 
-# THIS PARAMETER CAN CHANGE!!!
-# Make sure your code works for n_alcoves = 0, 1, 2, 3, and 4
-n_alcoves = 4
+# Make the turtle go faster
+speed(7)
 
 # Draw the Level 4 version of the room
-window = room.draw_room(level = 4, n_alcoves = 4)
+window = room.draw_room(level = 4, n_alcoves = 1)
 
 ###
 # Start your code here

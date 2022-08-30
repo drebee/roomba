@@ -35,6 +35,7 @@ def in_circle(x, y, radius, center):
     x2 = center[1]
     return (x - x1)**2 + (y - x2)**2 <= radius**2
 
+
 def draw_circle(radius, img1, center):
     alcove_radius = radius // 2
 
@@ -51,7 +52,7 @@ def draw_circle(radius, img1, center):
                 shape = [(start_x, start_y), (end_x, end_y)]
                 img1.rectangle(shape, fill ="white", outline = "gray")
 
-def draw_circles(radius, room_image_file, n_alcoves):
+def draw_circles(radius, room_image_file, n_alcoves = 0):
 
     alcove_radius = radius // 2
     n_rows = radius*2 + 1 + alcove_radius*2*2
@@ -63,31 +64,38 @@ def draw_circles(radius, room_image_file, n_alcoves):
     img = Image.new("RGB", (room_width+1, room_height+1), color="white")
     img1 = ImageDraw.Draw(img)  
     
-    # draw center circle
+    # Draw center circle as atrium
     draw_circle(
         radius,
         img1,
         center = (radius + alcove_radius*2,
                   radius + alcove_radius*2))
-    
+
+    # Draw a smaller circle to the right, as an alcove 
     if n_alcoves >= 1:
         draw_circle(
             alcove_radius,
             img1,
             center = (radius*2 + alcove_radius*2 + alcove_radius,
                       radius + alcove_radius*2))
+
+    # Draw another smaller circle to the left, as another alcove 
     if n_alcoves >= 2:
         draw_circle(
             alcove_radius,
             img1,
             center = (alcove_radius,
                       radius + alcove_radius*2))
+
+    # Draw another smaller circle above, as another alcove 
     if n_alcoves >= 3:
         draw_circle(
             alcove_radius,
             img1,
             center = (radius + alcove_radius*2,
                       alcove_radius))
+
+    # Draw another smaller circle below, as another alcove 
     if n_alcoves >= 4:
         draw_circle(
             alcove_radius,
@@ -95,6 +103,8 @@ def draw_circles(radius, room_image_file, n_alcoves):
             center = (radius + alcove_radius*2,
                       radius*2 + alcove_radius*2 + alcove_radius))
 
+    # Save the image to a file so we can use turtle to load
+    # (There's probably a cleaner way to do this??)
     img.save(room_image_file)
 
     return room_width, room_height
