@@ -8,8 +8,8 @@
 from turtle import right, left, forward, backward
 import room
 
-# Draw the Level 0 version of the room
-window = room.draw_room(level = 0)
+# Draw the Level 2 version of the room
+window = room.draw_room(level = 2)
 
 ###
 # Start your code here
