@@ -5,7 +5,7 @@
 # Author: Dr. EB <------ REPLACE THIS WITH YOUR NAME!
 # -----------------------------------------------------------------------------
  
-from turtle import right, forward, backward
+from turtle import left, forward, backward
 import room
 
 # Draw the Level 1 version of the room
