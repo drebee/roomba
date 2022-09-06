@@ -1,5 +1,6 @@
 from PIL import Image, ImageDraw
 from turtle import Screen, bgpic, shape, up, goto, down, left, right
+import os
 
 pixel_width = 40
 pixel_height = 40
@@ -110,7 +111,7 @@ def draw_circles(radius, room_image_file, n_alcoves = 0):
     return room_width, room_height
 
 def draw_room(level = 0, n_alcoves = 0):
-    room_image_file = f"img/room{level}.png"
+    room_image_file = os.path.join("img", f"room{level}.png")
 
     if level == 0 or level == 1:
         room_width, room_height = draw_rectangle(5, 5, room_image_file)
