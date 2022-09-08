@@ -1,10 +1,9 @@
 from PIL import Image, ImageDraw
-from turtle import Screen, bgpic, shape, up, goto, down, left, right
+from turtle import Screen, bgpic, shape, up, goto, down, left, right, screensize
 import os
 
 pixel_width = 40
 pixel_height = 40
-circle_room_radius = 5
 
 def draw_rectangle(n_cols, n_rows, room_image_file):
 
@@ -110,7 +109,8 @@ def draw_circles(radius, room_image_file, n_alcoves = 0):
 
     return room_width, room_height
 
-def draw_room(level = 0, n_alcoves = 0):
+def draw_room(level = 0, n_alcoves = 0, radius = None):
+    circle_room_radius = radius
     room_image_file = os.path.join("img", f"room{level}.png")
 
     if level == 0 or level == 1:
@@ -118,21 +118,39 @@ def draw_room(level = 0, n_alcoves = 0):
     elif level == 2:
         room_width, room_height = draw_rectangle(20, 15, room_image_file)
     elif level == 3:
-        room_width, room_height = draw_circles(circle_room_radius,
+        room_width, room_height = draw_circles(5,
                                                room_image_file)
-    else:
+    elif level < 6:
+        room_width, room_height = draw_circles(5,
+                                               room_image_file,
+                                               n_alcoves = n_alcoves)
+    elif level == 6:
+        room_width, room_height = draw_circles(10,
+                                               room_image_file)
+    elif level == 7:
+        room_width, room_height = draw_circles(10,
+                                               room_image_file,
+                                               n_alcoves = n_alcoves)
+    elif level == 8:
         room_width, room_height = draw_circles(circle_room_radius,
                                                room_image_file,
                                                n_alcoves = n_alcoves)
+    else:
+        print("No room defined for that level.")
 
 
     window_scale_factor = 1.8
-    window_width = int(room_width*window_scale_factor)
-    window_height = int(room_height*window_scale_factor)
+    window_width = 800#int(room_width*window_scale_factor)
+    window_height = 600#int(room_height*window_scale_factor)
 
     # Open the window so it's big enough to see the whole room
     window = Screen()
     window.setup(width=window_width, height=window_height)
+
+    screensize(
+        int(room_width*window_scale_factor),
+        int(room_height*window_scale_factor)
+    )
 
     # Add a background image with the room design
     bgpic(room_image_file)
