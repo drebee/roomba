@@ -1,1 +1,4 @@
-https://docs.google.com/document/d/18fpQ9mbmq_XqvccA63Elg3HaBSx7_VBuFQ83OAKEL74/
+1. in a terminal (or Anaconda prompt), type:
+    conda activate cs2425
+    conda install Pillow
+2. Open `roomba_level0.py`
