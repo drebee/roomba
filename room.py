@@ -1,6 +1,15 @@
 from PIL import Image, ImageDraw
-from turtle import Screen, bgpic, shape, up, goto, down, left, right, screensize
+from turtle import Screen, bgpic, shape, up, goto, down, left, right, screensize, forward
 import os
+
+def F(x):
+  forward(40)
+
+def L():
+  left(10)
+
+def R():
+  right(10)
 
 pixel_width = 40
 pixel_height = 40
@@ -118,17 +127,17 @@ def draw_room(level = 0, n_alcoves = 0, radius = None):
     elif level == 2:
         room_width, room_height = draw_rectangle(20, 15, room_image_file)
     elif level == 3:
-        room_width, room_height = draw_circles(5,
+        room_width, room_height = draw_circles(circle_room_radius,
                                                room_image_file)
     elif level < 6:
-        room_width, room_height = draw_circles(5,
+        room_width, room_height = draw_circles(circle_room_radius,
                                                room_image_file,
                                                n_alcoves = n_alcoves)
     elif level == 6:
-        room_width, room_height = draw_circles(10,
+        room_width, room_height = draw_circles(circle_room_radius,
                                                room_image_file)
     elif level == 7:
-        room_width, room_height = draw_circles(10,
+        room_width, room_height = draw_circles(circle_room_radius,
                                                room_image_file,
                                                n_alcoves = n_alcoves)
     elif level == 8:

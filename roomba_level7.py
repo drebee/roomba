@@ -5,8 +5,8 @@
 # Author: Dr. EB <------ REPLACE THIS WITH YOUR NAME!
 # -----------------------------------------------------------------------------
  
-from turtle import right, left, forward, backward
-import room
+from turtle import speed
+from room import draw_room, R, L, F
 
 # THIS PARAMETER CAN CHANGE!!!
 # Make sure your code works for n_alcoves = 0, 1, 2, 3, and 4
@@ -14,14 +14,14 @@ import room
 n_alcoves = 3
 
 # Draw the Level 7 version of the room
-window = room.draw_room(level = 7, n_alcoves = n_alcoves)
+window = draw_room(level = 7, n_alcoves = n_alcoves, radius = 5)
 
 ###
 # Start your code here
- 
- 
- 
+
+
+
 # End your code here
 ###
- 
+
 window.exitonclick()
